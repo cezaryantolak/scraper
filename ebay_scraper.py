@@ -9,12 +9,8 @@ def DisplayOptions(options):
  
     choice = int(input('Select option above or press enter to exit: '))
     choice_type = options[choice-1]
-
     
     return choice_type
-
-    
-
 
 choice='x'
 options = ['kruggerand', 'eagle', 'maple', 'philharmonic']
@@ -31,7 +27,10 @@ def parse(soup):
     productslist = []
     results = soup.find_all('div', {'class': 's-item__info clearfix'})
     for item in results:
-        product = {'title': item.find('h3', {'class': 's-item__title'}).text,'soldprice': float(item.find('span', {'class': 's-item__price'}).text.replace('$','').replace(',','').strip()), 'solddate': item.find('span', {'class': 's-item__title--tagblock__COMPLETED'}).find('span', {'class': 'POSITIVE'}).text, 'link': item.find('a', {'class': 's-item__link'})['href']}
+        product = {'title': item.find('h3', {'class': 's-item__title'}).text,
+                   'soldprice': float(item.find('span', {'class': 's-item__price'}).text.replace('$','').replace(',','').strip()), 
+                   'solddate': item.find('span', {'class': 's-item__title--tagblock__COMPLETED'}).find('span', {'class': 'POSITIVE'}).text, 
+                   'link': item.find('a', {'class': 's-item__link'})['href']}
         productslist.append(product)
     return productslist
 
